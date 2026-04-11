@@ -1,0 +1,26 @@
+Rozważ użycie interfejsów Set, List, Queue i Map. Dla każdego z następujących przypadków (zobacz specyfikację Java API – Java API zawiera kontrakty odpowiadające tym interfejsom) ustal, który z nich jest najbardziej odpowiedni oraz wyjaśnij, jak użyć go w implementacji.
+(i) Pewna firma chce odpowiednio zapisać swoich klientów. Każdego miesiąca będą oni losowo wybierani, aby otrzymać mały upominek. Trzeba wybrać strukturę danych odpowiednią dla losowania.
+(ii) Ta sama firma chce ponazywać produkty imionami swoich pracowników. Każde imię będzie użyte tylko raz. Trzeba przygotować listę imion.
+(iii) W końcu firma ta zdecydowała się użyć tylko najczęściej występujących imion swoich pracowników do nazwania produktów. Policzono ilu pracowników posiada dane imię. Trzeba przygotować listę imion.
+(iv) Firma chce rozprowadzić bilety na mecze lokalnej druż... [fragment zasłonięty] ...i. Trzeba skonstruować odpowiednią listę oczekujących.
+(i) Losowy wybór klientów do upominku
+•	Odpowiedni interfejs: List
+•	Dlaczego: Zgodnie ze specyfikacją Java API, interfejs List (Lista) to uporządkowana kolekcja, która zapewnia użytkownikowi precyzyjną kontrolę nad miejscem wstawienia każdego elementu i, co kluczowe w tym zadaniu, pozwala na swobodny dostęp do elementów za pomocą ich całkowitoliczbowego indeksu (metoda get(int index)).
+•	Jak użyć w implementacji: Należy użyć implementacji takiej jak ArrayList. Program losujący wygeneruje losową liczbę całkowitą (indeks) z przedziału od 0 do lista.size() - 1, a następnie pobierze klienta spod tego indeksu używając metody get().
+(ii) Przypisanie unikalnych imion do produktów
+•	Odpowiedni interfejs: Set
+•	Dlaczego: Specyfikacja API definiuje Set (Zbiór) jako kolekcję, która nie zawiera powtarzających się elementów (nie pozwala na duplikaty). Idealnie pasuje to do wymogu: "Każde imię będzie użyte tylko raz".
+•	Jak użyć w implementacji: Używamy implementacji HashSet (lub TreeSet, jeśli chcemy mieć je od razu posortowane alfabetycznie). Dodajemy wszystkie imiona pracowników za pomocą metody add(). Interfejs Set sam zadba o to, aby odrzucić duplikaty – jeśli spróbujesz dodać imię, które już znajduje się w zbiorze, zbiór po prostu zignoruje tę operację.
+(iii) Zliczanie najczęściej występujących imion
+•	Odpowiedni interfejs: Map
+•	Dlaczego: Interfejs Map (Mapa/Słownik) jest obiektem odwzorowującym klucze na wartości (pary klucz-wartość). Mapa nie może zawierać powielonych kluczy, a każdy klucz może być odwzorowany na co najwyżej jedną wartość. W tym zadaniu musimy powiązać konkretne imię (Klucz) z ilością jego wystąpień (Wartość).
+•	Jak użyć w implementacji: Najlepiej użyć Map<String, Integer> (np. implementacji HashMap). Kluczem jest imię, a wartością – licznik. Przechodząc przez pracowników sprawdzamy: jeśli imienia nie ma w mapie, dodajemy je z wartością 1 (map.put(imie, 1)). Jeśli już tam jest, pobieramy obecną wartość licznika i zastępujemy ją wartością powiększoną o jeden.
+(iv) Konstrukcja listy oczekujących na bilety
+•	Odpowiedni interfejs: Queue
+•	Dlaczego: Dokumentacja Java definiuje Queue (Kolejkę) jako kolekcję przeznaczoną do przechowywania elementów przed ich przetworzeniem. Klasyczne kolejki działają w trybie FIFO (First-In-First-Out, czyli "pierwszy wszedł, pierwszy wyszedł"). To naturalny odpowiednik rzeczywistej kolejki lub "listy oczekujących".
+•	Jak użyć w implementacji: Można użyć klasy LinkedList, która implementuje interfejs Queue. Klienci ustawiający się w kolejce po bilety są dodawani na koniec kolejki (np. metodą offer()). Gdy pojawiają się wolne bilety, system obsługuje osoby zaczynając od początku kolejki, usuwając je z niej (metodą poll()), co gwarantuje sprawiedliwość w systemie kolejkowym.
+
+Zadanie nr 2 w oparciu na zadanie 1 napisz program w javie który będzie losowął nazwiska klientów z listy (zobacz punkt(i)) a następnie je usuwał. Dokładniej zaimplementuj klase Names z obiektowym atrybutem names odpowiadającym wspomnianej liście i z obiektową metodą choose() która zwraca losowo wybrane nazwisko z listy names usuwając je jednocześnie
+
+
+
