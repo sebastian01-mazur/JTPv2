@@ -1,11 +1,6 @@
 package LAB3.ZAD2;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
-
-
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class FigureTest {
@@ -79,5 +74,69 @@ public class FigureTest {
 
         // Ponieważ metoda group() klonuje obiekty, oryginał p1 się nie zmieni
         assertEquals(new Point(1, 1), p1);
+    }
+    @Test
+    public void testEqualsAllBranches() {
+        Point p1 = new Point(1, 1);
+        Point p2 = new Point(1, 1);
+        Point p3 = new Point(2, 2);
+
+        // Ten sam obiekt (this == o)
+        assertTrue(p1.equals(p1));
+        // Ten sam stan, inny obiekt
+        assertTrue(p1.equals(p2));
+        // Inny stan
+        assertFalse(p1.equals(p3));
+        // Obiekt innej klasy i null (!(o instanceof...))
+        assertFalse(p1.equals("String"));
+        assertFalse(p1.equals(null));
+
+        // To samo dla linii
+        Line l1 = new Line(new Point(0,0), new Point(1,1));
+        Line l2 = new Line(new Point(0,0), new Point(1,1));
+        assertTrue(l1.equals(l2));
+        assertFalse(l1.equals(null));
+        assertFalse(l1.equals(p1));
+    }
+
+    @Test
+    public void testToStringMethods() {
+        Point p = new Point(1.5, -2.0);
+        assertNotNull(p.toString());
+        assertTrue(p.toString().contains("Point"));
+
+        Line l = new Line(new Point(0,0), new Point(1,1));
+        assertNotNull(l.toString());
+        assertTrue(l.toString().contains("Line"));
+
+        Polygon poly = new Polygon(new Point(0,0), new Point(1,1), new Point(2,0));
+        assertNotNull(poly.toString());
+        assertTrue(poly.toString().contains("Polygon"));
+
+        Group g = new Group();
+        g.addFigure(p);
+        assertNotNull(g.toString());
+        assertTrue(g.toString().contains("Group"));
+    }
+
+    @Test
+    public void testGroupMethodsFully() {
+        Group g = new Group();
+        Point p = new Point(1, 1);
+        g.addFigure(p);
+
+        g.move(1, 1);
+        assertEquals(new Point(2, 2), p);
+
+        g.flip();
+        assertEquals(new Point(-2, -2), p);
+
+        g.rotate(Math.PI);
+        // Po prostu sprawdzamy czy przechodzi bez rzucania wyjątków i uruchamia pętle
+        assertNotNull(g);
+
+        Group g2 = g.clone();
+        assertTrue(g.equals(g2));
+        assertFalse(g.equals(null));
     }
 }

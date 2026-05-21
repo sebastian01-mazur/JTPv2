@@ -6,13 +6,24 @@ Zaimplementuj klasy Point, Line, Polygon, Group. Przedostatnia klasa ma implemen
 
     rotate(double x) obracająca dana figurę przeciwnie do wskazówek zegara o kąt x
 
-    equals(Object o) sprawdzającą, czy figury są równe
+        equals(Object o) sprawdzającą, czy figury są równe
 
-    toString() zwracająca łańcuch znaków (String) reprezentujący daną figurę
+        toString() zwracająca łańcuch znaków (String) reprezentujący daną figurę
 
-    clone() kopiująca daną figurę
+        clone() kopiująca daną figurę
 
-    group grupującą wybrane figury w jedną grupę. Jaką sygnaturę powinna mieć ta metoda?
+        group grupującą wybrane figury w jedną grupę. Jaką sygnaturę powinna mieć ta metoda?
 
-Zilustrować implementację odpowiednim diagramem klas (zobacz UML).
-Napisz testy JUnit pokrywające minimum 90% kodu. Użyj narzędzia EclEmma do sprawdzenia stopnia pokrycia kodu testami.
+        Zilustrować powyższą strukturę odpowiednim diagramem klas (zobacz UML).
+
+        Przy implementacji użyj podejścia Najpierw Test.
+
+        Napisz testy JUnit pokrywające minimum 90% kodu.
+
+        Użyj narzędzia EclEmma do sprawdzenia stopnia pokrycia kodu testami.
+
+        Podaj grafy przepływu sterowania dla metod move, rotate and flip dla klasy Polygon;
+
+        Pokryj wszystkie wierzchołki i krawędzie; wypisz i pokryj ścieżki dla powyższych metod:
+        a. Ścieżki proste, tj. ścieżki od wejścia do wyjścia bez powtarzania węzłów;
+        b. Ścieżki testujące pętle (kl. Polygon), każda pętla ma być wykonana od 1 do 5 razy.
