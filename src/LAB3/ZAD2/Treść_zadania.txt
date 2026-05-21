@@ -1,0 +1,18 @@
+Zaimplementuj klasy Point, Line, Polygon, Group. Przedostatnia klasa ma implementować wielokąty wyznaczone przez pewną liczbę punktów. Ostatnia klasa ma implementować grupy figur (jak w przypadku edytorów typu PowerPoint). Wszystkie klasy mają implementować interfejs Figur (lub klasę abstrakcyjną z abstrakcyjnymi metodami min. equals(Object o) żeby wymusić nadpisanie). Figure ma posiadać metody:
+
+    move(double dx, double dy) przesuwającą daną figurę
+
+    flip() przerzucająca dana figurę symetrycznie względem początku układu współrzędnych
+
+    rotate(double x) obracająca dana figurę przeciwnie do wskazówek zegara o kąt x
+
+    equals(Object o) sprawdzającą, czy figury są równe
+
+    toString() zwracająca łańcuch znaków (String) reprezentujący daną figurę
+
+    clone() kopiująca daną figurę
+
+    group grupującą wybrane figury w jedną grupę. Jaką sygnaturę powinna mieć ta metoda?
+
+Zilustrować implementację odpowiednim diagramem klas (zobacz UML).
+Napisz testy JUnit pokrywające minimum 90% kodu. Użyj narzędzia EclEmma do sprawdzenia stopnia pokrycia kodu testami.
